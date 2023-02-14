@@ -1,0 +1,28 @@
+CREATE TABLE Member (
+  Membre_ID INT PRIMARY KEY,
+  Nom_M VARCHAR(255),
+  Prenom_M VARCHAR(255),
+  Email_M VARCHAR(255),
+  MembrePasse VARCHAR(255),
+  TelephoneM VARCHAR(255)
+);
+
+CREATE TABLE Announcement (
+  Announcement_ID INT PRIMARY KEY,
+  Titre VARCHAR(255),
+  Prix DECIMAL(10,2),
+  DatePub DATE,
+  LastModified DATE,
+  Adresse VARCHAR(255),
+  Category VARCHAR(255),
+  Type VARCHAR(255),
+  Membre_ID INT,
+  FOREIGN KEY (Membre_ID) REFERENCES Member(Membre_ID)
+);
+
+CREATE TABLE Image (
+  Image_ID INT PRIMARY KEY,
+  ImageUrl VARCHAR(255),
+  Announcement_ID INT,
+  FOREIGN KEY (Announcement_ID) REFERENCES Announcement(Announcement_ID)
+);
